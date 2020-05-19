@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSの勉強</title>
+  <style>
+    .job {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .warn {
+      font-size: 40px;
+      color: red;
+    }
+
+    .container {
+      width: 200px;
+      margin: 100px auto;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  
+
+  <script>
+    'use strict';
+    {
+      function* shopping(){
+        //歩道
+
+        //歩道を歩いてお店に行く
+
+        //お店に到着したのでお金を持ってお店に入る
+
+        const stuffFromStore = yield 'お金'; //yieldを使うと一旦、外の世界に出る
+
+        //コインランドリーに到着したので服を持って入る
+        const cleanClothes = yield 'よごれた服'
+
+        //家に歩いて帰る
+        return [stuffFromStore, cleanClothes];
+      }
+
+      //お店関連の世界
+      const gen=shopping();
+      console.log(gen.next()); //家から歩道に出る
+      console.log(gen.next('日用品')); //お店で買い物をして日用品を持って歩道に戻る。一旦中断していた箇所から再開
+      console.log(gen.next('きれいな服'));
+      
+    }
+  </script>
+
+
+</body>
+
+</html>
